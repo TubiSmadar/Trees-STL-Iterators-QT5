@@ -1,28 +1,28 @@
-#include "preOrder.hpp"
+#include "dfs.hpp"
 
 template <typename T>
-PreOrderIterator<T>::PreOrderIterator(Node<T>* root) {
+DFSIterator<T>::DFSIterator(Node<T>* root) {
     if (root) {
         stack.push(root);
     }
 }
 
 template <typename T>
-bool PreOrderIterator<T>::operator!=(const PreOrderIterator& other) const {
+bool DFSIterator<T>::operator!=(const DFSIterator& other) const {
     return !stack.empty() || !other.stack.empty();
 }
 
 template <typename T>
-T& PreOrderIterator<T>::operator*() {
+T& DFSIterator<T>::operator*() {
     return stack.top()->value;
 }
 
 template <typename T>
-PreOrderIterator<T>& PreOrderIterator<T>::operator++() {
+DFSIterator<T>& DFSIterator<T>::operator++() {
     Node<T>* node = stack.top();
-    nodeStack.pop();
+    stack.pop();
     for (auto it = node->children.rbegin(); it != node->children.rend(); ++it) {
-        nodeStack.push(*it);
+        stack.push(*it);
     }
     return *this;
 }
