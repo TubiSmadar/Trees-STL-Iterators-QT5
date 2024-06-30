@@ -1,3 +1,6 @@
+#ifndef DFS_CPP
+#define DFS_CPP
+
 #include "dfs.hpp"
 
 template <typename T>
@@ -26,3 +29,4 @@ DFSIterator<T>& DFSIterator<T>::operator++() {
     }
     return *this;
 }
+#endif

@@ -29,7 +29,7 @@ T& InOrderIterator<T>::operator*() {
 
 template <typename T>
 InOrderIterator<T>& InOrderIterator<T>::operator++() {
-    TreeNode<T>* node = stack.top();
+    Node<T>* node = stack.top();
     stack.pop();
 
     if (!node->children.empty()) {

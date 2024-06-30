@@ -1,12 +1,12 @@
 #ifndef TREE_HPP
 #define TREE_HPP
 
-#include "tree.hpp"
+#include "node.hpp"
 #include "preOrder.hpp"
 #include "postOrder.hpp"
 #include "inOrder.hpp"
 #include "dfs.hpp"
-// #include "DFSIterator.hpp"
+#include "bfs.hpp"
 #include <stdexcept>
 #include <vector>
 #include <queue>
@@ -16,14 +16,14 @@ template <typename T>
 class Tree {
 private:
     Node<T>* root;
-    int k;
+    size_t k;
     void heapify(Node<T>* node);
 
 public:
-    Tree(int max_children = 2);
+    Tree(size_t max_children = 2);
     ~Tree();
-    void add_root(T value);
-    void add_sub_node(Node<T>* parent, T value);
+    void add_root(const Node<T>& value);
+    void add_sub_node(Node<T> parent, const Node<T>& value);
     void delete_tree(Node<T>* node);
     Node<T>* get_root();
 
@@ -43,7 +43,7 @@ public:
 // Definitions of template methods
 
 template <typename T>
-Tree<T>::Tree(int max_children) : k(max_children), root(nullptr) {}
+Tree<T>::Tree(size_t max_children) : root(nullptr), k(max_children) {}
 
 template <typename T>
 Tree<T>::~Tree() {
@@ -61,17 +61,18 @@ void Tree<T>::delete_tree(Node<T>* node) {
 }
 
 template <typename T>
-void Tree<T>::add_root(T value) {
+void Tree<T>::add_root(const Node<T>& value) {
     if (root) delete_tree(root);
-    root = new TreeNode<T>(value);
+    root = new Node<T>(value);
 }
 
 template <typename T>
-void Tree<T>::add_sub_node(Node<T>* parent, T value) {
-    if (parent->children.size() >= k) {
+void Tree<T>::add_sub_node(Node<T> parent, const Node<T>& value) {
+    if (parent.children.size() >= k) {
         throw std::overflow_error("Max children reached");
     }
-    parent->children.push_back(new TreeNode<T>(value));
+    Node<T>* newNode = new Node<T>(value);
+    parent.children.push_back(newNode);
 }
 
 template <typename T>

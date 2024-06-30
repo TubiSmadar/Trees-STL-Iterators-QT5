@@ -20,9 +20,9 @@ T& PreOrderIterator<T>::operator*() {
 template <typename T>
 PreOrderIterator<T>& PreOrderIterator<T>::operator++() {
     Node<T>* node = stack.top();
-    nodeStack.pop();
+    stack.pop();
     for (auto it = node->children.rbegin(); it != node->children.rend(); ++it) {
-        nodeStack.push(*it);
+        stack.push(*it);
     }
     return *this;
 }

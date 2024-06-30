@@ -8,7 +8,8 @@ class Node {
 public:
     T value;
     std::vector<Node*> children;
-    Node(T val) : value(val) {}
+    
+    Node(const T& val) : value(val) {}
     T get_value() const { return value; }
 };
 

@@ -7,7 +7,7 @@ PostOrderIterator<T>::PostOrderIterator(Node<T>* root) : lastVisited(nullptr) {
 
 template <typename T>
 void PostOrderIterator<T>::pushChild(Node<T>* node) {
-    nodeStack.push(node);
+    stack.push(node);
     for (auto it = node->children.rbegin(); it != node->children.rend(); ++it) {
         pushChildren(*it);
     }
