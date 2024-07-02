@@ -25,32 +25,32 @@ This project implements a generic k-ary tree data structure in C++, which suppor
 ## Installation
 
 Clone the repository:
-    ```
+    
     git clone https://github.com/TubiSmadar/yourrepository.git
     cd yourrepository
-    ```
+    
 
 Compile the project:
-    ```
+    
     make
-    ```
+    
 
 ## Usage
 ### Running the Tree Visualization
 
 To run the tree visualization, execute the tree binary:
 
-    ```
+    
     ./tree
-    ```
+    
 
 ### Running Tests
 
 To run the unit tests, execute the test binary:
 
-    ```
+    
     ./test
-    ```
+    
 
 ## File Structure
 
